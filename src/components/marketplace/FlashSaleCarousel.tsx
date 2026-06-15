@@ -12,9 +12,9 @@ import { Timer, ArrowRight } from "lucide-react";
 
 export default function FlashSaleCarousel() {
   const [timeLeft, setTimeLeft] = useState({
-    hours: 5,
-    minutes: 45,
-    seconds: 30,
+    hours: 0,
+    minutes: 13,
+    seconds: 25,
   });
 
   useEffect(() => {
@@ -36,63 +36,64 @@ export default function FlashSaleCarousel() {
   const formatTime = (time: number) => time.toString().padStart(2, "0");
 
   return (
-    <section className="py-12 bg-gradient-to-r from-[#005BAC] to-[#003d73]">
+    <section className="py-6">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-          <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-            <div className="flex items-center gap-2 text-white">
-              <Timer size={32} className="text-[#F9B000]" />
-              <h2 className="text-3xl font-bold italic">KILAT SALE</h2>
-            </div>
-            
-            <div className="flex items-center gap-2">
-              <span className="text-white font-medium mr-2">Berakhir dalam:</span>
-              <div className="flex gap-2">
-                <div className="bg-white text-[#005BAC] font-bold w-10 h-10 flex items-center justify-center rounded-lg shadow-sm">
-                  {formatTime(timeLeft.hours)}
-                </div>
-                <span className="text-white font-bold text-xl">:</span>
-                <div className="bg-white text-[#005BAC] font-bold w-10 h-10 flex items-center justify-center rounded-lg shadow-sm">
-                  {formatTime(timeLeft.minutes)}
-                </div>
-                <span className="text-white font-bold text-xl">:</span>
-                <div className="bg-white text-[#005BAC] font-bold w-10 h-10 flex items-center justify-center rounded-lg shadow-sm">
-                  {formatTime(timeLeft.seconds)}
+        <div className="bg-gradient-to-r from-[#005BAC] to-[#003d73] rounded-2xl p-4 md:p-6 shadow-sm">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 gap-4 border-b border-white/20 pb-4">
+            <div className="flex flex-col md:flex-row md:items-center gap-4">
+              <div className="flex items-center gap-2 text-white">
+                <span className="text-2xl md:text-3xl">🔥</span>
+                <h2 className="text-xl md:text-2xl font-bold italic">Flash Sale</h2>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <span className="text-white text-sm font-medium mr-1 hidden md:block">Berakhir dalam:</span>
+                <div className="flex gap-1.5 items-center">
+                  <div className="bg-red-500 text-white font-bold w-8 h-8 flex items-center justify-center rounded shadow-sm text-sm">
+                    {formatTime(timeLeft.hours)}
+                  </div>
+                  <span className="text-red-500 font-bold">:</span>
+                  <div className="bg-red-500 text-white font-bold w-8 h-8 flex items-center justify-center rounded shadow-sm text-sm">
+                    {formatTime(timeLeft.minutes)}
+                  </div>
+                  <span className="text-red-500 font-bold">:</span>
+                  <div className="bg-red-500 text-white font-bold w-8 h-8 flex items-center justify-center rounded shadow-sm text-sm">
+                    {formatTime(timeLeft.seconds)}
+                  </div>
                 </div>
               </div>
             </div>
+            
+            <Link 
+              href="/marketplace/deals" 
+              className="text-white hover:text-[#F9B000] font-medium flex items-center gap-1 transition-colors text-sm group"
+            >
+              Lihat Semua
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
-          
-          <Link 
-            href="/marketplace/deals" 
-            className="text-white hover:text-[#F9B000] font-medium flex items-center gap-1 transition-colors group"
-          >
-            Lihat Semua Promo
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
 
-        <div className="relative">
-          <Swiper
-            modules={[Navigation]}
-            spaceBetween={16}
-            slidesPerView={2}
-            navigation
-            breakpoints={{
-              640: { slidesPerView: 3 },
-              768: { slidesPerView: 4 },
-              1024: { slidesPerView: 5 },
-            }}
-            className="flash-sale-swiper"
-          >
-            {dummyFlashSale.map((product) => (
-              <SwiperSlide key={product.id} className="pb-4">
-                <ProductCard product={product} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          
-          {/* Custom Navigation Styling needed in global CSS or inline block, Swiper adds its own classes */}
+          <div className="relative">
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={12}
+              slidesPerView={2}
+              navigation
+              breakpoints={{
+                640: { slidesPerView: 3 },
+                768: { slidesPerView: 4 },
+                1024: { slidesPerView: 5 },
+                1280: { slidesPerView: 6 },
+              }}
+              className="flash-sale-swiper"
+            >
+              {dummyFlashSale.map((product) => (
+                <SwiperSlide key={product.id} className="pb-2">
+                  <ProductCard product={product} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
       </div>
     </section>

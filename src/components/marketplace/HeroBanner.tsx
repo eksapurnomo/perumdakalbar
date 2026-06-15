@@ -11,45 +11,49 @@ import { dummyBanners } from "@/data/marketplace-dummy";
 
 export default function HeroBanner() {
   return (
-    <section className="bg-slate-50 py-6">
+    <section className="bg-slate-50 pt-6 pb-2">
       <div className="container mx-auto px-4">
-        <div className="rounded-2xl overflow-hidden shadow-lg">
-          <Swiper
-            modules={[Autoplay, Pagination, EffectFade]}
-            effect="fade"
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            className="w-full h-[300px] md:h-[400px] lg:h-[500px]"
-          >
-            {dummyBanners.map((banner) => (
-              <SwiperSlide key={banner.id}>
-                <div className="relative w-full h-full">
-                  <div className="absolute inset-0 bg-black/40 z-10" />
-                  <img
-                    src={banner.imageUrl}
-                    alt={banner.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
-                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 max-w-4xl leading-tight">
-                      {banner.title}
-                    </h2>
-                    {banner.subtitle && (
-                      <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl">
-                        {banner.subtitle}
-                      </p>
-                    )}
-                    <Link
-                      href={banner.link}
-                      className="bg-[#F9B000] hover:bg-[#e09e00] text-slate-900 font-bold py-3 px-8 rounded-full text-lg transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                    >
-                      {banner.buttonText}
-                    </Link>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        <div className="flex flex-col lg:flex-row gap-4 h-auto lg:h-[220px]">
+          {/* Main Slider (70%) */}
+          <div className="w-full lg:w-[70%] h-[140px] md:h-[180px] lg:h-full rounded-2xl overflow-hidden shadow-sm relative group">
+            <Swiper
+              modules={[Autoplay, Pagination, EffectFade]}
+              effect="fade"
+              pagination={{ clickable: true }}
+              autoplay={{ delay: 5000, disableOnInteraction: false }}
+              className="w-full h-full"
+            >
+              {dummyBanners.map((banner) => (
+                <SwiperSlide key={banner.id}>
+                  <Link href={banner.link} className="relative w-full h-full block">
+                    <img
+                      src={banner.imageUrl}
+                      alt={banner.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+
+          {/* Stacked Promos (30%) */}
+          <div className="hidden lg:flex lg:w-[30%] flex-col gap-4 h-full">
+            <Link href="/marketplace/promo-1" className="flex-1 rounded-2xl overflow-hidden shadow-sm relative block bg-slate-200 hover:shadow-md transition-shadow">
+              <img 
+                src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=400&h=150&auto=format&fit=crop" 
+                alt="Promo 1" 
+                className="w-full h-full object-cover"
+              />
+            </Link>
+            <Link href="/marketplace/promo-2" className="flex-1 rounded-2xl overflow-hidden shadow-sm relative block bg-slate-200 hover:shadow-md transition-shadow">
+              <img 
+                src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=400&h=150&auto=format&fit=crop" 
+                alt="Promo 2" 
+                className="w-full h-full object-cover"
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

@@ -43,7 +43,7 @@ export default function MarketplaceHeader() {
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
-              <Link href="/marketplace" className="flex items-center relative h-10 w-40 shrink-0">
+              <Link href="/marketplace" className="flex items-center relative h-14 w-60 shrink-0">
                 <img 
                   src="/marketplace-logo.svg" 
                   alt="Aneka Usaha Logo" 
