@@ -62,7 +62,7 @@ export default function Header() {
               <Link href="/tentang" className={`transition-colors ${scrolled ? 'hover:text-primary' : 'hover:text-white'}`}>Tentang Kami</Link>
               <Link href="/berita" className={`transition-colors ${scrolled ? 'hover:text-primary' : 'hover:text-white'}`}>Berita</Link>
               <Link href="/karier" className={`transition-colors ${scrolled ? 'hover:text-primary' : 'hover:text-white'}`}>Karier</Link>
-              <Link href="/ppid" className={`transition-colors ${scrolled ? 'hover:text-primary' : 'hover:text-white'}`}>PPID</Link>
+              <Link href="https://ppid.perumdakalbar.com" className={`transition-colors ${scrolled ? 'hover:text-primary' : 'hover:text-white'}`}>PPID</Link>
               <Link href="/pengadaan" className={`transition-colors ${scrolled ? 'hover:text-primary' : 'hover:text-white'}`}>Pengadaan</Link>
               <Link href="/kontak" className={`transition-colors ${scrolled ? 'hover:text-primary' : 'hover:text-white'}`}>Kontak</Link>
             </nav>
